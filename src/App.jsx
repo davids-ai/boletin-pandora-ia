@@ -11,6 +11,7 @@ import LoadingScreen from './components/LoadingScreen'
 import './components/LoadingScreen.css'
 import TTSWidget from './components/TTSWidget'
 import { playWelcomeOnce } from './utils/tts'
+import logoPng from './assets/logo.png'
 
 // App principal que organiza la landing
 export default function App(){
@@ -48,7 +49,12 @@ export default function App(){
 
       <TTSWidget />
 
-      <footer className="app-footer">© Pandor-AI 2025</footer>
+      <footer className="app-footer">
+        <div className="footer-inner">
+          <span>© Pandor-AI — Boletín Futurista</span>
+          <img src={logoPng} alt="Pandor-AI logo" className="footer-logo" />
+        </div>
+      </footer>
     </div>
   )
 }

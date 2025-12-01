@@ -36,6 +36,23 @@ body{
   border: 1px solid rgba(255,255,255,0.03);
 }
 
+/* Header right logo */
+.top-banner .logo-right img{height:72px;filter:drop-shadow(0 8px 28px rgba(155,89,255,0.14));}
+
+/* Footer layout */
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+.footer-logo{height:64px;opacity:0.95}
+
+@media (max-width:900px){
+  .top-banner .logo-right img{height:48px}
+  .footer-logo{height:40px}
+}
+
+@media (max-width:600px){
+  .top-banner .logo-right img{height:34px}
+  .footer-logo{height:28px}
+}
+
 .logo{display:flex;align-items:center;gap:12px}
 .logo svg{height:34px;filter:drop-shadow(0 6px 20px rgba(155,89,255,0.18));}
 

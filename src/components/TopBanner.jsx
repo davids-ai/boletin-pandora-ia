@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import Logo from '../assets/logo.svg'
+import LogoPng from '../assets/logo.png'
 
 /*
   TopBanner
@@ -20,6 +21,9 @@ export default function TopBanner(){
         <a href="#inicio">Inicio</a>
         <a href="#miembros">Miembros</a>
       </nav>
+      <div className="logo-right" aria-hidden>
+        <img src={LogoPng} alt="Pandor-AI logo" />
+      </div>
     </motion.header>
   )
 }
