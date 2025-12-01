@@ -47,7 +47,8 @@ function BarChart({data, height=240}){
   }
 
   // increase height slightly to give more room for multi-line labels
-  const svgHeight = Math.max(height, 300)
+  // increase height to give more room for larger labels and avoid overlap with nearby charts
+  const svgHeight = Math.max(height, 380)
   return (
     <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} preserveAspectRatio="xMidYMid meet" style={{width:'100%',height:'auto',minWidth:420}}>
       <defs>
@@ -77,13 +78,12 @@ function BarChart({data, height=240}){
               transition={{duration:0.9, delay:0.12 + i*0.08, ease:'circOut'}}
             />
 
-            <text x={x + barWidth/2} y={labelY} fontFamily="Orbitron, Inter, sans-serif" fontSize={10} fill="rgba(230,233,239,0.85)" textAnchor="middle">
+            <text x={x + barWidth/2} y={labelY} fontFamily="Orbitron, Inter, sans-serif" fontSize={13} fill="rgba(230,233,239,0.9)" textAnchor="middle">
               {lines.map((ln,li)=> (
-                <tspan key={li} x={x + barWidth/2} dy={li===0?0:16}>{ln}</tspan>
+                <tspan key={li} x={x + barWidth/2} dy={li===0?0:20}>{ln}</tspan>
               ))}
             </text>
-
-            <text x={x + barWidth/2} y={y - 8} fontFamily="Orbitron, Inter, sans-serif" fontSize={14} fill="var(--cyan)" fontWeight={700} textAnchor="middle">
+            <text x={x + barWidth/2} y={y - 8} fontFamily="Orbitron, Inter, sans-serif" fontSize={16} fill="var(--cyan)" fontWeight={700} textAnchor="middle">
               {d.value}%
             </text>
           </g>
