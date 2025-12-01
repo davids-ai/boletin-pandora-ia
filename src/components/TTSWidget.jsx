@@ -3,22 +3,19 @@ import { speakNow } from '../utils/tts'
 import './TTSWidget.css'
 
 export default function TTSWidget(){
-  const [visible, setVisible] = useState(false)
+  // The widget should be visible always per user request
+  const [visible] = useState(true)
   const [status, setStatus] = useState('idle')
 
   useEffect(()=>{
-    // Do NOT call playWelcomeOnce here to avoid duplicate playback.
-    // Instead, check sessionStorage after a short delay — App will attempt autoplay once.
-    let mounted = true
-    const check = setTimeout(()=>{
-      try{
-        const played = sessionStorage.getItem('pandor_tts_played_v1')
-        if(!mounted) return
-        if(played){ setStatus('played'); setVisible(false) }
-        else { setStatus('manual'); setVisible(true) }
-      }catch(e){ if(mounted){ setStatus('manual'); setVisible(true) } }
-    }, 1400)
-    return ()=>{ mounted = false; clearTimeout(check) }
+    // Set an initial status based on whether the welcome has already played,
+    // but do not hide the widget. The App controls autoplay separately.
+    try{
+      const played = sessionStorage.getItem('pandor_tts_played_v1')
+      setStatus(played ? 'played' : 'manual')
+    }catch(e){
+      setStatus('manual')
+    }
   },[])
 
   const handlePlay = async ()=>{
