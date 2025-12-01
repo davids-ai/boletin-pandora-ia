@@ -1,0 +1,10 @@
+.tts-widget{position:fixed;right:18px;bottom:18px;z-index:120;display:flex;align-items:center}
+.tts-widget__btn{display:flex;align-items:center;gap:10px;background:linear-gradient(90deg,var(--electric-blue),var(--neon-purple));color:#031018;border:none;padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px rgba(123,86,255,0.12);cursor:pointer;font-weight:700}
+.tts-widget__btn svg{filter:drop-shadow(0 8px 20px rgba(0,212,255,0.08));}
+.tts-widget__label{font-family:'Inter',sans-serif;font-size:13px}
+
+@media (max-width:600px){
+  .tts-widget{right:12px;bottom:12px}
+  .tts-widget__label{display:none}
+  .tts-widget__btn{padding:10px;border-radius:10px}
+}

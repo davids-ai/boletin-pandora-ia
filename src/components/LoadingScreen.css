@@ -1,0 +1,54 @@
+/* LoadingScreen.css
+   Cyberpunk / futuristic loading overlay styles
+*/
+
+.loading-screen{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;pointer-events:auto}
+.loading-screen .ls-overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(1,1,6,0.92), rgba(3,3,9,0.95));backdrop-filter: blur(6px);}
+
+.ls-stage{position:relative;z-index:6;width:min(980px,92%);display:flex;flex-direction:column;align-items:center;gap:18px;padding:36px;border-radius:12px}
+
+/* core energetic nucleus */
+.ls-core{width:140px;height:140px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:4;filter:drop-shadow(0 12px 40px rgba(123,86,255,0.12));}
+.ls-core-inner{width:84px;height:84px;border-radius:50%;background:radial-gradient(circle at 30% 20%, rgba(0,212,255,0.95), rgba(155,89,255,0.85) 45%, rgba(2,7,12,0.4) 60%);box-shadow:0 6px 24px rgba(0,212,255,0.12), inset 0 2px 10px rgba(255,255,255,0.04);}
+
+/* circuits / bars */
+.ls-circuits{position:absolute;inset:0;pointer-events:none;display:flex;align-items:center;justify-content:space-between;padding:18px}
+.ls-circuits .circuit{width:6px;height:60%;background:linear-gradient(180deg, rgba(0,212,255,0.18), rgba(155,89,255,0.12));border-radius:4px;opacity:0.9}
+.ls-circuits .c1{transform:translateY(0);animation:slide-vert 1.8s linear infinite}
+.ls-circuits .c2{transform:translateY(0);animation:slide-vert 2.2s linear infinite}
+.ls-circuits .c3{transform:translateY(0);animation:slide-vert 2.6s linear infinite}
+
+@keyframes slide-vert{0%{transform:translateY(-10%)}50%{transform:translateY(10%)}100%{transform:translateY(-10%)}}
+
+/* scan grid */
+.ls-scan-grid{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;mix-blend-mode:overlay;filter:blur(6px);opacity:0.9}
+.ls-scan-grid .scan-lines{animation:scan-move 10s linear infinite}
+@keyframes scan-move{0%{transform:translateY(-6%)}100%{transform:translateY(6%)}}
+
+/* status text */
+.ls-status{position:relative;z-index:7;text-align:center}
+.ls-status-text{font-family:'Orbitron', 'Inter', sans-serif;font-size:18px;color:var(--electric-blue);font-weight:700;letter-spacing:0.6px;text-shadow:0 6px 18px rgba(123,86,255,0.08)}
+.ls-status-glitch{position:absolute;inset:0;left:0;color:var(--neon-purple);opacity:0.12;mix-blend-mode:screen;clip-path:inset(60% 0 0 0);transform:translateX(-2px);}
+
+/* particles placeholder */
+.ls-particles{position:absolute;inset:0;z-index:2;pointer-events:none}
+
+/* exit animation */
+.loading-screen.ls-exit{pointer-events:none}
+.loading-screen.ls-exit .ls-stage{animation:ls-exit 0.82s cubic-bezier(.2,.9,.2,1) forwards}
+@keyframes ls-exit{0%{opacity:1;transform:scale(1) skewY(0deg)}50%{opacity:0.9;transform:scale(0.99) skewY(1deg)}100%{opacity:0;transform:scale(0.98) skewY(2deg)}}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .ls-core{animation:none}
+  .ls-circuits .c1,.ls-circuits .c2,.ls-circuits .c3{animation:none}
+  .ls-scan-grid .scan-lines{animation:none}
+}
+
+/* responsive */
+@media (max-width:720px){
+  .ls-core{width:110px;height:110px}
+  .ls-core-inner{width:64px;height:64px}
+  .ls-stage{padding:20px}
+  .ls-status-text{font-size:16px}
+}

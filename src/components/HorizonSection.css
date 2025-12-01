@@ -1,0 +1,11 @@
+/* Styles for HorizonSection — editorial, clean, and coherent with globals */
+.horizon-section{padding:56px 24px;}
+.horizon-section__inner{max-width:1100px;margin:0 auto;display:block}
+.horizon-section__title{font-family:'Orbitron', sans-serif;font-size:24px;color:var(--neon-purple);margin:0 0 14px;letter-spacing:0.6px}
+.horizon-section__body{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:var(--card-glow)}
+.horizon-section__body p{margin:0 0 12px;color:rgba(230,233,239,0.92);line-height:1.6;font-family:'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+
+@media (max-width:900px){
+  .horizon-section{padding:40px 18px}
+  .horizon-section__title{font-size:20px}
+}
